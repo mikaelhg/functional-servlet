@@ -15,21 +15,21 @@ import java.io.IOException;
  */
 public class FunctionalFilter implements javax.servlet.Filter {
 
-    final FilterCall func;
+    final FunctionalServiceCall serviceHandle;
 
-    public static FunctionalFilter of(FilterCall func) {
+    public static FunctionalFilter of(FunctionalServiceCall func) {
         return new FunctionalFilter(func);
     }
 
-    public FunctionalFilter(FilterCall func) {
-        this.func = func;
+    public FunctionalFilter(FunctionalServiceCall serviceHandle) {
+        this.serviceHandle = serviceHandle;
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException
     {
-        if (func.call(request, response)) {
+        if (serviceHandle.call(request, response)) {
             chain.doFilter(request, response);
         }
     }

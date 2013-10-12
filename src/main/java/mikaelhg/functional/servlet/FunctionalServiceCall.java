@@ -6,7 +6,7 @@ import javax.servlet.ServletResponse;
 import java.io.IOException;
 
 @FunctionalInterface
-public interface FilterCall {
+public interface FunctionalServiceCall {
 
     boolean call(ServletRequest req, ServletResponse res)
             throws ServletException, IOException;
